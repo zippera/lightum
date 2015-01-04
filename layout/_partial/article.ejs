@@ -1,0 +1,56 @@
+<article class="<%= item.layout %>">
+  <% if (item.photos){ %>
+    <%- partial('post/gallery') %>
+  <% } %>
+  <div class="post-content">
+    <header>
+      <% if (item.layout != 'page'){ %>
+        <div class="icon"></div>
+        <time datetime="<%= item.date.toDate().toISOString() %>"><a href="<%- config.root %><%- item.path %>"><%= item.date.format(config.date_format) %></a></time>
+      <% } %>
+      <%- partial('post/title') %>
+    </header>
+    <div class="entry">
+      <% if (item.excerpt && index){ %>
+        <%- item.excerpt %>
+      <% } else { %>
+        <%- item.content %>
+      <% } %>
+    </div>
+    <footer>
+      <% if (index){ %>
+        <% if (item.excerpt){ %>
+          <div class="alignleft">
+            <a href="<%- config.root %><%- item.path %>#more" class="more-link"><%= theme.excerpt_link %></a>
+          </div>
+        <% } %>
+        <% if (item.comment && config.disqus_shortname){ %>
+        <div class="alignright">
+          <a href="<%- item.permalink %>#disqus_thread" class="comment-link">Comments</a>
+        </div>
+        <% } %>
+      <% } else { %>
+        <%- partial('post/category') %>
+        <%- partial('post/tag') %>
+<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+<a class="bds_qzone"></a>
+<a class="bds_tsina"></a>
+<a class="bds_tqq"></a>
+<a class="bds_renren"></a>
+<a class="bds_t163"></a>
+<span class="bds_more"></span>
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=3326447" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->      <% } %>
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<%- partial('comment') %>

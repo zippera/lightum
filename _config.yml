@@ -1,0 +1,34 @@
+menu:
+  首页: /
+  归档: /archives
+  关于: /about
+  
+
+widgets:
+- search
+- category
+- intro
+- weibo
+
+excerpt_link: 阅读全文
+
+plugins:
+- hexo-generator-feed
+
+twitter:
+  username:
+  show_replies: false
+  tweet_count: 5
+
+addthis:
+  enable: true
+  pubid:
+  facebook: true
+  twitter: true
+  google: true
+  pinterest: true
+
+fancybox: true
+
+google_analytics: UA-41207871-1
+rss: http://zipperary.com/atom.xml
